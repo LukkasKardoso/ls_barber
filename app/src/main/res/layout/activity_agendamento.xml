@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/agendamentos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D17">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <!-- CARD PRINCIPAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/recipeinte"
+            android:backgroundTint="#040510"
+            android:padding="20dp">
+
+            <!-- LOGO CENTRAL (SEM MENU) -->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_ls"
+                android:background="@drawable/circle_shape"
+                android:clipToOutline="true"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- TÍTULO DATA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELECIONAR DATA"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- CALENDÁRIO -->
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!-- TÍTULO HORÁRIO -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELECIONAR HORÁRIO"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- HORÁRIOS -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:00"
+                        android:textColor="#000000"
+                        android:background="@drawable/bg_horario"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11:00"
+                        android:textColor="#000000"
+                        android:background="@drawable/bg_horario"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12:00"
+                        android:textColor="#000000"
+                        android:background="@drawable/bg_horario"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"/>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- BOTÃO -->
+            <Button
+                android:id="@+id/btnConfirmar"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="CONFIRMAR"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#7B241C"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
