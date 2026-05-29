@@ -31,7 +31,7 @@
             android:layout_marginBottom="16dp"/>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/btEscrita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login"
@@ -42,7 +42,7 @@
 
         <!-- EMAIL -->
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/btLogin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="E-mail"
@@ -57,7 +57,7 @@
 
         <!-- SENHA -->
         <EditText
-            android:id="@+id/editTextNumberPassword"
+            android:id="@+id/SenhaLogin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Senha"
@@ -88,7 +88,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/btEsqueceuSenha"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -96,7 +96,7 @@
                 android:textColor="#AAAAAA"/>
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/CriarConta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Criar conta"

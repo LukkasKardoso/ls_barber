@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/avisos"
+    android:id="@+id/scroll_avisos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0D0D17"
@@ -13,7 +13,6 @@
         android:gravity="center"
         android:padding="16dp">
 
-        <!-- CARD PRINCIPAL -->
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
             android:backgroundTint="#040510"
             android:padding="16dp">
 
-            <!-- LOGO MAIOR -->
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -32,7 +30,6 @@
                 android:clipToOutline="true"
                 android:layout_marginBottom="16dp" />
 
-            <!-- TÍTULO COM ÍCONES DE ALERTA -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +50,6 @@
                     android:gravity="center" />
             </LinearLayout>
 
-            <!-- ITEM 1: FERIADOS -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,10 +63,10 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:src="@android:drawable/ic_menu_today"
-
                     android:layout_centerVertical="true" />
 
                 <TextView
+                    android:id="@+id/tv_aviso_feriados"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/img_calendar"
@@ -81,7 +77,6 @@
                     android:lineSpacingExtra="2dp" />
             </RelativeLayout>
 
-            <!-- ITEM 2: PROMOÇÃO -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,6 +93,7 @@
                     android:layout_centerVertical="true" />
 
                 <TextView
+                    android:id="@+id/tv_aviso_promocao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/img_promo"
@@ -108,7 +104,6 @@
                     android:lineSpacingExtra="2dp" />
             </RelativeLayout>
 
-            <!-- ITEM 3: NOVOS HORÁRIOS -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,6 +120,7 @@
                     android:layout_centerVertical="true" />
 
                 <TextView
+                    android:id="@+id/tv_aviso_horarios"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/img_clock_info"

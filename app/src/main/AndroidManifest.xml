@@ -12,22 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lsbarver">
         <activity
-            android:name=".activity_avisos"
-            android:exported="false" />
-        <activity
-            android:name=".activity_meus_agendamentos"
-            android:exported="false" />
-        <activity
-            android:name=".activity_agendamento"
-            android:exported="false" />
-        <activity
-            android:name=".activity_servicos"
-            android:exported="false" />
-        <activity
-            android:name=".activity_esqueceu_senha"
-            android:exported="false" />
-        <activity
-            android:name=".activity_cadastro"
+            android:name=".activity_admin_servicos"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -38,6 +23,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity_cadastro"
+            android:exported="false" />
+        <activity
+            android:name=".activity_esqueceu_senha"
+            android:exported="false" />
+        <activity
+            android:name=".activity_servicos"
+            android:exported="false" />
+        <activity
+            android:name=".activity_agendamento"
+            android:exported="false" />
+        <activity
+            android:name=".activity_meus_agendamentos"
+            android:exported="false" />
+        <activity
+            android:name=".activity_avisos"
+            android:exported="false" />
+        <activity
+            android:name=".activity_admin_painel"
+            android:exported="false" />
+        <activity
+            android:name=".activity_admin_agendamentos"
+            android:exported="false" />
+        <activity
+            android:name=".activity_admin_avisos"
+            android:exported="false" />
     </application>
 
 </manifest>

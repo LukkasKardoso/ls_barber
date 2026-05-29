@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#060614"
@@ -14,37 +13,22 @@
         android:padding="24dp">
 
         <TextView
-            android:id="@+id/tv_titulo_meus_agendamentos"
+            android:id="@+id/tv_titulo_lista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MEUS AGENDAMENTOS"
-            android:textSize="22sp"
+            android:text="AGENDAMENTOS SOLICITADOS"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="16dp"/>
 
-        <Button
-            android:id="@+id/btn_ir_para_avisos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ver Avisos"
-            android:backgroundTint="#8B0000"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"/>
-
-        <ListView
-            android:id="@+id/list_agendamentos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
         <TextView
-            android:id="@+id/tv_sem_meus_agendamentos"
+            android:id="@+id/tv_sem_agendamentos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Você ainda não possui agendamentos."
+            android:text="Nenhum agendamento encontrado."
             android:textColor="#AAAAAA"
             android:textSize="16sp"
             android:gravity="center"
@@ -52,7 +36,7 @@
             android:layout_marginTop="40dp"/>
 
         <LinearLayout
-            android:id="@+id/container_meus_agendamentos"
+            android:id="@+id/container_agendamentos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

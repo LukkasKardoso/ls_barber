@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/nova_senha"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_container_nova_senha"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,8 +9,8 @@
     android:gravity="center"
     android:padding="24dp">
 
-    <!-- CARD -->
     <LinearLayout
+        android:id="@+id/ll_card_nova_senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -19,8 +19,8 @@
         android:padding="24dp"
         android:gravity="center">
 
-        <!-- LOGO -->
         <ImageView
+            android:id="@+id/iv_logo_nova_senha"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/logo_ls"
@@ -29,8 +29,8 @@
             android:background="@drawable/circle_shape"
             android:layout_marginBottom="16dp"/>
 
-        <!-- TÍTULO -->
         <TextView
+            android:id="@+id/tv_titulo_nova_senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nova Senha"
@@ -39,9 +39,22 @@
             android:textColor="#FFFFFF"
             android:layout_marginBottom="24dp"/>
 
-        <!-- NOVA SENHA -->
         <EditText
-            android:id="@+id/novaSenha"
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Digite seu e-mail"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/arredondamento"
+            android:backgroundTint="#2A3F6B"
+            android:textColor="#FFFFFF"
+            android:paddingStart="16dp"
+            android:drawableStart="@android:drawable/ic_dialog_email"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/et_nova_senha"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Digite nova senha"
@@ -54,9 +67,8 @@
             android:drawablePadding="10dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- CONFIRMAR SENHA -->
         <EditText
-            android:id="@+id/confirmarSenha"
+            android:id="@+id/et_confirmar_senha"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Confirme nova senha"
@@ -69,9 +81,8 @@
             android:drawablePadding="10dp"
             android:layout_marginBottom="24dp"/>
 
-        <!-- BOTÃO -->
         <Button
-            android:id="@+id/btSenha"
+            android:id="@+id/btn_salvar_nova_senha"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Salvar nova senha"
@@ -80,9 +91,8 @@
             android:backgroundTint="#8B0000"
             android:layout_marginBottom="16dp"/>
 
-        <!-- VOLTAR -->
         <TextView
-            android:id="@+id/voltarLogin"
+            android:id="@+id/tv_voltar_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Voltar ao login"
