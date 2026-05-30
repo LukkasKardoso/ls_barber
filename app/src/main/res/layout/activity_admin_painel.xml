@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#060614"
+    android:background="#0A0B1E"
     android:gravity="center"
     android:padding="24dp">
 
     <ImageView
         android:id="@+id/iv_logo_admin"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/logo_ls"
         android:scaleType="centerCrop"
         android:clipToOutline="true"
         android:background="@drawable/circle_shape"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="24dp"/>
 
     <TextView
         android:id="@+id/tv_titulo_painel"
@@ -35,17 +35,17 @@
         android:text="Gerenciar Agendamentos"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:backgroundTint="#8B0000"
+        android:backgroundTint="#B22222"
         android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btn_editar_avisos"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="Editar Avisos "
+        android:text="Editar Avisos"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:backgroundTint="#8B0000"
+        android:backgroundTint="#B22222"
         android:layout_marginBottom="16dp"/>
 
     <Button
@@ -55,16 +55,16 @@
         android:text="Editar Serviços"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:backgroundTint="#8B0000"
-        android:layout_marginBottom="16dp"/>
+        android:backgroundTint="#B22222"
+        android:layout_marginBottom="32dp"/>
 
     <Button
         android:id="@+id/btn_sair_painel"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:text="Sair do Painel"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:backgroundTint="#8B0000"/>
+        android:backgroundTint="#3D5A80"/>
 
 </LinearLayout>

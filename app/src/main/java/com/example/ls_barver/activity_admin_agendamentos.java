@@ -3,7 +3,6 @@ package com.example.ls_barver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,61 +33,70 @@ public class activity_admin_agendamentos extends AppCompatActivity {
         containerAgendamentos.removeAllViews();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+        // Query buscando ID, Serviço, Data, Hora, Status e o Nome do Usuário
         String query = "SELECT a." + DatabaseHelper.COL_AG_ID + ", a." + DatabaseHelper.COL_AG_SERVICO + ", " +
                 "a." + DatabaseHelper.COL_AG_DATA + ", a." + DatabaseHelper.COL_AG_HORA + ", a." + DatabaseHelper.COL_AG_STATUS + ", " +
-                "u." + DatabaseHelper.COL_USER_NOME + ", u." + DatabaseHelper.COL_USER_TELEFONE +
+                "u." + DatabaseHelper.COL_USER_NOME +
                 " FROM " + DatabaseHelper.TABLE_AGENDAMENTOS + " a " +
                 " INNER JOIN " + DatabaseHelper.TABLE_USUARIOS + " u ON a." + DatabaseHelper.COL_AG_USER_ID + " = u." + DatabaseHelper.COL_USER_ID +
                 " ORDER BY a." + DatabaseHelper.COL_AG_ID + " DESC";
 
-        Cursor cursor = db.rawQuery(query, null);
+        try {
+            Cursor cursor = db.rawQuery(query, null);
+            if (cursor != null && cursor.getCount() > 0) {
+                tvSemAgendamentos.setVisibility(View.GONE);
+                while (cursor.moveToNext()) {
+                    final int id = cursor.getInt(0);
+                    String servico = cursor.getString(1);
+                    String data = cursor.getString(2);
+                    String hora = cursor.getString(3);
+                    String status = cursor.getString(4);
+                    String clienteNome = cursor.getString(5);
 
-        if (cursor != null && cursor.getCount() > 0) {
-            tvSemAgendamentos.setVisibility(View.GONE);
-            while (cursor.moveToNext()) {
-                final int id = cursor.getInt(0);
-                String servico = cursor.getString(1);
-                String data = cursor.getString(2);
-                String hora = cursor.getString(3);
-                String status = cursor.getString(4);
-                String clienteNome = cursor.getString(5);
+                    // Criação do Card
+                    LinearLayout cardLayout = new LinearLayout(this);
+                    cardLayout.setOrientation(LinearLayout.VERTICAL);
+                    cardLayout.setPadding(32, 32, 32, 32);
+                    cardLayout.setBackgroundColor(Color.parseColor("#11142A"));
 
-                LinearLayout cardLayout = new LinearLayout(this);
-                cardLayout.setOrientation(LinearLayout.VERTICAL);
-                cardLayout.setPadding(32, 32, 32, 32);
-                cardLayout.setBackgroundColor(Color.parseColor("#11142A"));
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -2);
-                params.setMargins(0, 0, 0, 24);
-                cardLayout.setLayoutParams(params);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -2);
+                    params.setMargins(0, 0, 0, 24);
+                    cardLayout.setLayoutParams(params);
 
-                TextView tvInfo = new TextView(this);
-                tvInfo.setText("Cliente: " + clienteNome + "\nServiço: " + servico + "\nData: " + data + " às " + hora);
-                tvInfo.setTextColor(Color.WHITE);
-                cardLayout.addView(tvInfo);
+                    // Exibição dos dados
+                    TextView tvInfo = new TextView(this);
+                    tvInfo.setText("Cliente: " + clienteNome + "\nServiço: " + servico + "\nData: " + data + " às " + hora);
+                    tvInfo.setTextColor(Color.WHITE);
+                    cardLayout.addView(tvInfo);
 
-                TextView tvStatus = new TextView(this);
-                tvStatus.setText("Status: " + status);
-                tvStatus.setTypeface(null, Typeface.BOLD);
-                tvStatus.setTextColor(status.equalsIgnoreCase("Cancelado") ? Color.RED : Color.GREEN);
-                cardLayout.addView(tvStatus);
+                    TextView tvStatus = new TextView(this);
+                    tvStatus.setText("Status: " + status);
+                    tvStatus.setTextColor(status.equalsIgnoreCase("Cancelado") ? Color.RED : Color.GREEN);
+                    cardLayout.addView(tvStatus);
 
-                if (!status.equalsIgnoreCase("Cancelado")) {
-                    Button btnCancelar = new Button(this);
-                    btnCancelar.setText("Cancelar Agendamento");
-                    btnCancelar.setBackgroundColor(Color.RED);
-                    btnCancelar.setOnClickListener(v -> {
-                        dbHelper.atualizarStatusAgendamento(id, "Cancelado");
-                        Toast.makeText(this, "Agendamento cancelado!", Toast.LENGTH_SHORT).show();
-                        listarAgendamentos();
-                    });
-                    cardLayout.addView(btnCancelar);
+                    // Ação de Cancelamento
+                    if (!status.equalsIgnoreCase("Cancelado")) {
+                        Button btnCancelar = new Button(this);
+                        btnCancelar.setText("Cancelar Agendamento");
+                        btnCancelar.setBackgroundColor(Color.RED);
+                        btnCancelar.setTextColor(Color.WHITE);
+                        btnCancelar.setOnClickListener(v -> {
+                            dbHelper.atualizarStatusAgendamento(id, "Cancelado");
+                            Toast.makeText(this, "Agendamento cancelado!", Toast.LENGTH_SHORT).show();
+                            listarAgendamentos(); // Atualiza a lista automaticamente
+                        });
+                        cardLayout.addView(btnCancelar);
+                    }
+                    containerAgendamentos.addView(cardLayout);
                 }
-                containerAgendamentos.addView(cardLayout);
+                cursor.close();
+            } else {
+                tvSemAgendamentos.setVisibility(View.VISIBLE);
             }
-            cursor.close();
-        } else {
-            tvSemAgendamentos.setVisibility(View.VISIBLE);
+        } catch (Exception e) {
+            Toast.makeText(this, "Erro ao carregar lista: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        } finally {
+            db.close();
         }
-        db.close();
     }
 }

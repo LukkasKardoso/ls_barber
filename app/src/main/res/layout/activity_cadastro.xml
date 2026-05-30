@@ -2,35 +2,34 @@
 <LinearLayout
     android:id="@+id/cadastro"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#060614"
+    android:background="#0A0B1E"
     android:gravity="center"
     android:padding="24dp">
 
-    <!-- CARD -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/recipeinte"
-        android:backgroundTint="#040510"
+        android:backgroundTint="#161830"
         android:padding="24dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:elevation="8dp">
 
-        <!-- LOGO -->
         <ImageView
             android:id="@+id/imageViewCadastro"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/logo_ls"
             android:scaleType="centerCrop"
             android:clipToOutline="true"
             android:background="@drawable/circle_shape"
             android:layout_marginBottom="16dp"/>
 
-        <!-- TÍTULO -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,84 +39,90 @@
             android:textColor="#FFFFFF"
             android:layout_marginBottom="24dp"/>
 
-        <!-- NOME -->
         <EditText
             android:id="@+id/btNome"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Nome"
+            android:textColorHint="#B0C4DE"
             android:background="@drawable/arredondamento"
-            android:backgroundTint="#2A3F6B"
+            android:backgroundTint="#3D5A80"
             android:textColor="#FFFFFF"
             android:paddingStart="16dp"
-            android:drawableStart="@android:drawable/ic_menu_myplaces"
-            android:drawablePadding="10dp"
+            android:paddingEnd="16dp"
+            app:drawableStartCompat="@android:drawable/ic_menu_myplaces"
+            android:drawableTint="#FFFFFF"
+            android:drawablePadding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- EMAIL -->
         <EditText
             android:id="@+id/btEmailCadastro"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="E-mail"
+            android:textColorHint="#B0C4DE"
             android:inputType="textEmailAddress"
             android:background="@drawable/arredondamento"
-            android:backgroundTint="#2A3F6B"
+            android:backgroundTint="#3D5A80"
             android:textColor="#FFFFFF"
             android:paddingStart="16dp"
-            android:drawableStart="@android:drawable/ic_dialog_email"
-            android:drawablePadding="10dp"
+            android:paddingEnd="16dp"
+            app:drawableStartCompat="@android:drawable/ic_dialog_email"
+            android:drawableTint="#FFFFFF"
+            android:drawablePadding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- SENHA -->
         <EditText
             android:id="@+id/btSenhaCadastro"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Senha"
+            android:textColorHint="#B0C4DE"
             android:inputType="textPassword"
             android:background="@drawable/arredondamento"
-            android:backgroundTint="#2A3F6B"
+            android:backgroundTint="#3D5A80"
             android:textColor="#FFFFFF"
             android:paddingStart="16dp"
-            android:drawableStart="@android:drawable/ic_lock_lock"
-            android:drawablePadding="10dp"
+            android:paddingEnd="16dp"
+            app:drawableStartCompat="@android:drawable/ic_lock_idle_lock"
+            android:drawableTint="#FFFFFF"
+            android:drawablePadding="12dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- CONFIRMAR SENHA -->
         <EditText
             android:id="@+id/btConfirmarSn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Confirmar senha"
+            android:textColorHint="#B0C4DE"
             android:inputType="textPassword"
             android:background="@drawable/arredondamento"
-            android:backgroundTint="#2A3F6B"
+            android:backgroundTint="#3D5A80"
             android:textColor="#FFFFFF"
             android:paddingStart="16dp"
-            android:drawableStart="@android:drawable/ic_lock_lock"
-            android:drawablePadding="10dp"
+            android:paddingEnd="16dp"
+            app:drawableStartCompat="@android:drawable/ic_lock_idle_lock"
+            android:drawableTint="#FFFFFF"
+            android:drawablePadding="12dp"
             android:layout_marginBottom="24dp"/>
 
-        <!-- BOTÃO -->
         <Button
             android:id="@+id/btCadastro"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="Cadastrar"
+            android:text="CADASTRAR"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:backgroundTint="#8B0000"
+            android:backgroundTint="#B22222"
             android:layout_marginBottom="16dp"/>
 
-        <!-- VOLTAR LOGIN -->
         <TextView
             android:id="@+id/btVoltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Já tem conta? Entrar"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#E0E0E0"
+            android:textSize="14sp"/>
 
     </LinearLayout>
-
 </LinearLayout>

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText btLogin, SenhaLogin;
     Button btEntrar;
-    TextView CriarConta, tvEsqueceuSenha; // Variável corrigida
+    TextView CriarConta, tvEsqueceuSenha;
     DatabaseHelper dbHelper;
 
     @Override
@@ -23,20 +23,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Inicialização do Helper
         dbHelper = new DatabaseHelper(this);
+
+        // Garante que o Admin seja criado se não existir (sem apagar os dados atuais)
+        dbHelper.verificarAdmin();
+
+        // Mapeamento dos componentes
         btLogin = findViewById(R.id.btLogin);
         SenhaLogin = findViewById(R.id.SenhaLogin);
         btEntrar = findViewById(R.id.btEntrar);
         CriarConta = findViewById(R.id.CriarConta);
-
-        // CORREÇÃO: Usando o ID exato que está no seu XML (btEsqueceuSenha)
         tvEsqueceuSenha = findViewById(R.id.btEsqueceuSenha);
 
+        // Ações de clique
         btEntrar.setOnClickListener(v -> realizarLogin());
 
-        CriarConta.setOnClickListener(v -> startActivity(new Intent(this, activity_cadastro.class)));
+        CriarConta.setOnClickListener(v -> {
+            startActivity(new Intent(this, activity_cadastro.class));
+        });
 
-        // Clique para a tela de recuperação de senha
         tvEsqueceuSenha.setOnClickListener(v -> {
             startActivity(new Intent(this, activity_esqueceu_senha.class));
         });
@@ -62,11 +68,13 @@ public class MainActivity extends AppCompatActivity {
             String tipo = cursor.getString(1);
             cursor.close();
 
+            // Salva a sessão do usuário
             getSharedPreferences("ls_barber_prefs", MODE_PRIVATE)
                     .edit()
                     .putInt("usuario_id", usuarioId)
                     .apply();
 
+            // Redirecionamento baseado no tipo de usuário
             if ("admin".equalsIgnoreCase(tipo)) {
                 startActivity(new Intent(this, activity_admin_painel.class));
             } else {

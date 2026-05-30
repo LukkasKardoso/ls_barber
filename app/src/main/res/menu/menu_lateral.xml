@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_conta"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Conta" />
+    <item
+        android:id="@+id/nav_agendamentos"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="Meus agendamentos" />
+    <item
+        android:id="@+id/nav_tabela"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Tabela de valores" />
+    <item
+        android:id="@+id/nav_data_horarios"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="Data e horários" />
+    <item
+        android:id="@+id/nav_avisos"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Avisos" />
+    <item
+        android:id="@+id/nav_sair"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:title="Sair" />
+</menu>

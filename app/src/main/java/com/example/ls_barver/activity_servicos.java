@@ -1,16 +1,17 @@
 package com.example.ls_barver;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 
 public class activity_servicos extends AppCompatActivity {
 
-    private TextView tvBemVindo;
-    // Removidos os botões btnAvisos e btnSair
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
     private Button btnCorte, btnBarba, btnSobrancelha, btnPenteado, btnPezinho;
 
     @Override
@@ -18,38 +19,38 @@ public class activity_servicos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicos);
 
-        tvBemVindo = findViewById(R.id.tv_bem_vindo);
+        // Configuração do Menu Lateral
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        findViewById(R.id.btn_menu_hamburger).setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+
+        // Listener de Navegação (Isso faz o menu funcionar!)
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_agendamentos) startActivity(new Intent(this, activity_meus_agendamentos.class));
+            else if (id == R.id.nav_tabela) { /* Já estamos aqui */ }
+            else if (id == R.id.nav_data_horarios) startActivity(new Intent(this, activity_agendamento.class));
+            else if (id == R.id.nav_avisos) startActivity(new Intent(this, activity_avisos.class));
+            else if (id == R.id.nav_sair) { finishAffinity(); startActivity(new Intent(this, MainActivity.class)); }
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        });
+
+        // Inicialização dos Botões de Serviço
         btnCorte = findViewById(R.id.btn_corte);
         btnBarba = findViewById(R.id.btn_barba);
         btnSobrancelha = findViewById(R.id.btn_sobrancelha);
         btnPenteado = findViewById(R.id.btn_penteado);
         btnPezinho = findViewById(R.id.btn_pezinho);
 
-        SharedPreferences prefs = getSharedPreferences("ls_barber_prefs", MODE_PRIVATE);
-        tvBemVindo.setText("Olá, " + prefs.getString("usuario_nome", "Cliente") + "!");
-
-        btnCorte.setOnClickListener(v -> abrirAgendamento("Corte de Cabelo"));
-        btnBarba.setOnClickListener(v -> abrirAgendamento("Barba"));
-        btnSobrancelha.setOnClickListener(v -> abrirAgendamento("Sobrancelha"));
-        btnPenteado.setOnClickListener(v -> abrirAgendamento("Penteado"));
-        btnPezinho.setOnClickListener(v -> abrirAgendamento("Pezinho"));
-
-        // Nenhum código extra para Avisos ou Sair
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        atualizarPrecos();
-    }
-
-    private void atualizarPrecos() {
-        SharedPreferences prefs = getSharedPreferences("ls_barber_servicos", MODE_PRIVATE);
-        btnCorte.setText("Corte - R$ " + prefs.getString("preco_corte", "35"));
-        btnBarba.setText("Barba - R$ " + prefs.getString("preco_barba", "25"));
-        btnSobrancelha.setText("Sobrancelhas - R$ " + prefs.getString("preco_sobrancelha", "10"));
-        btnPenteado.setText("Penteado - R$ " + prefs.getString("preco_penteado", "15"));
-        btnPezinho.setText("Pezinho - R$ " + prefs.getString("preco_pezinho", "5"));
+        // Ações de clique
+        btnCorte.setOnClickListener(v -> abrirAgendamento("Corte - R$ 35"));
+        btnBarba.setOnClickListener(v -> abrirAgendamento("Barba - R$ 25"));
+        btnSobrancelha.setOnClickListener(v -> abrirAgendamento("Sobrancelhas - R$ 10"));
+        btnPenteado.setOnClickListener(v -> abrirAgendamento("Penteado - R$ 15"));
+        btnPezinho.setOnClickListener(v -> abrirAgendamento("Pezinho - R$ 5"));
     }
 
     private void abrirAgendamento(String servico) {

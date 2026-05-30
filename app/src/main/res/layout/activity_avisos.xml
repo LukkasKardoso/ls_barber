@@ -1,138 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroll_avisos"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D17"
-    android:fillViewport="true">
+    android:background="#0A0B1E"
+    android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/recipeinte"
-            android:backgroundTint="#040510"
-            android:padding="16dp">
+        <ImageView
+            android:id="@+id/btn_menu_hamburger"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+            app:tint="#FFFFFF"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:src="@drawable/logo_ls"
-                android:background="@drawable/circle_shape"
-                android:clipToOutline="true"
-                android:layout_marginBottom="16dp" />
+        <ScrollView
+            android:id="@+id/scroll_avisos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_marginTop="80dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@drawable/recipeinte"
-                android:backgroundTint="#1A1A2E"
-                android:padding="12dp"
-                android:layout_marginBottom="20dp">
+                android:padding="24dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="⚠️  AVISOS  ⚠️"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:gravity="center" />
+                    android:orientation="vertical"
+                    android:background="@drawable/recipeinte"
+                    android:backgroundTint="#161830"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo_ls"
+                        android:background="@drawable/circle_shape"
+                        android:clipToOutline="true"
+                        android:layout_marginBottom="24dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:background="@drawable/recipeinte"
+                        android:backgroundTint="#3D5A80"
+                        android:padding="16dp"
+                        android:layout_marginBottom="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="⚠️  AVISOS  ⚠️"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="22sp"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="100dp"
+                        android:background="@drawable/recipeinte"
+                        android:backgroundTint="#3D5A80"
+                        android:padding="20dp"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:id="@+id/img_calendar"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            app:srcCompat="@android:drawable/ic_menu_today"
+                            app:tint="#FFFFFF"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/tv_aviso_feriados"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/img_calendar"
+                            android:layout_marginStart="20dp"
+                            android:text="Feriados: Em dias de feriado, nossos horários podem sofrer alterações. Consulte antes de agendar."
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:lineSpacingExtra="4dp"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="100dp"
+                        android:background="@drawable/recipeinte"
+                        android:backgroundTint="#3D5A80"
+                        android:padding="20dp"
+                        android:layout_marginBottom="16dp">
+
+                        <ImageView
+                            android:id="@+id/img_promo"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            app:srcCompat="@android:drawable/btn_star_big_on"
+                            app:tint="#FFFFFF"
+                            android:layout_centerVertical="true" />
+
+                        <TextView
+                            android:id="@+id/tv_aviso_promocao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/img_promo"
+                            android:layout_marginStart="20dp"
+                            android:text="Promoção: Aproveite nossas promoções da semana! Descontos especiais em corte e barba por tempo limitado."
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:lineSpacingExtra="4dp"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="100dp"
+                        android:background="@drawable/recipeinte"
+                        android:backgroundTint="#3D5A80"
+                        android:padding="20dp"
+                        android:layout_marginBottom="10dp">
+
+                        <ImageView
+                            android:id="@+id/img_clock_info"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            app:srcCompat="@android:drawable/ic_menu_recent_history"
+                            android:layout_centerVertical="true"
+                            app:tint="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/tv_aviso_horarios"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/img_clock_info"
+                            android:layout_marginStart="20dp"
+                            android:text="Novos horários: Estamos com novos horários disponíveis! Agora atendemos em mais períodos para melhor te atender."
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:lineSpacingExtra="4dp"
+                            android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                </LinearLayout>
             </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/recipeinte"
-                android:backgroundTint="#1A1A2E"
-                android:padding="16dp"
-                android:layout_marginBottom="16dp">
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#161830"
+        app:itemTextColor="#FFFFFF"
+        app:itemIconTint="#FFFFFF"
+        app:menu="@menu/menu_lateral" />
 
-                <ImageView
-                    android:id="@+id/img_calendar"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@android:drawable/ic_menu_today"
-                    android:layout_centerVertical="true" />
-
-                <TextView
-                    android:id="@+id/tv_aviso_feriados"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/img_calendar"
-                    android:layout_marginStart="15dp"
-                    android:text="Feriados: Em dias de feriado, nossos horários podem sofrer alterações. Consulte antes de agendar."
-                    android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/recipeinte"
-                android:backgroundTint="#1A1A2E"
-                android:padding="16dp"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:id="@+id/img_promo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@android:drawable/btn_star_big_on"
-                    android:layout_centerVertical="true" />
-
-                <TextView
-                    android:id="@+id/tv_aviso_promocao"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/img_promo"
-                    android:layout_marginStart="15dp"
-                    android:text="Promoção: Aproveite nossas promoções da semana! Descontos especiais em corte e barba por tempo limitado."
-                    android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/recipeinte"
-                android:backgroundTint="#1A1A2E"
-                android:padding="16dp"
-                android:layout_marginBottom="10dp">
-
-                <ImageView
-                    android:id="@+id/img_clock_info"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@android:drawable/ic_menu_recent_history"
-                    android:layout_centerVertical="true" />
-
-                <TextView
-                    android:id="@+id/tv_aviso_horarios"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/img_clock_info"
-                    android:layout_marginStart="15dp"
-                    android:text="Novos horários: Estamos com novos horários disponíveis! Agora atendemos em mais períodos para melhor te atender."
-                    android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>

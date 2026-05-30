@@ -9,18 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class activity_cadastro extends AppCompatActivity {
 
-    EditText btNome, btEmailCadastro, btSenhaCadastro, btConfirmarSn;
-    Button btCadastro;
-    TextView btVoltar;
-    DatabaseHelper dbHelper;
+    private EditText btNome, btEmailCadastro, btSenhaCadastro, btConfirmarSn;
+    private Button btCadastro;
+    private TextView btVoltar;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +33,6 @@ public class activity_cadastro extends AppCompatActivity {
         btVoltar = findViewById(R.id.btVoltar);
 
         btCadastro.setOnClickListener(v -> realizarCadastro());
-
         btVoltar.setOnClickListener(v -> finish());
     }
 
@@ -47,12 +42,14 @@ public class activity_cadastro extends AppCompatActivity {
         String senha = btSenhaCadastro.getText().toString().trim();
         String confirmar = btConfirmarSn.getText().toString().trim();
 
+        // Validação de campos vazios
         if (TextUtils.isEmpty(nome) || TextUtils.isEmpty(email) ||
                 TextUtils.isEmpty(senha) || TextUtils.isEmpty(confirmar)) {
-            Toast.makeText(this, "Preencha todos os campos obrigatórios!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        // Validação de senha
         if (!senha.equals(confirmar)) {
             Toast.makeText(this, "As senhas não coincidem!", Toast.LENGTH_SHORT).show();
             return;
@@ -63,19 +60,26 @@ public class activity_cadastro extends AppCompatActivity {
             return;
         }
 
+        // Inserção no banco
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COL_USER_NOME, nome);
         values.put(DatabaseHelper.COL_USER_EMAIL, email);
         values.put(DatabaseHelper.COL_USER_SENHA, senha);
 
-        long resultado = db.insert(DatabaseHelper.TABLE_USUARIOS, null, values);
+        try {
+            long resultado = db.insert(DatabaseHelper.TABLE_USUARIOS, null, values);
 
-        if (resultado != -1) {
-            Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
-            finish();
-        } else {
-            Toast.makeText(this, "Erro: Email já cadastrado!", Toast.LENGTH_SHORT).show();
+            if (resultado != -1) {
+                Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                Toast.makeText(this, "Erro: Este e-mail já está cadastrado.", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Erro ao cadastrar: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        } finally {
+            db.close(); // Fecha o banco sempre
         }
     }
 }
